@@ -4,11 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class InputReader : MonoBehaviour, InputActions.ILocomotionActions
+public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, InputActions.IAttacksActions
 {
     public float horizontalMove;
 
     public Action OnJumpPerformed;
+    public Action OnWeakPerformed;
+    public Action OnWeakUpPerformed;
+    public Action OnWeakSidePerformed;
+    public Action OnWeakDownPerformed;
+
+    public bool shielding;
 
     private InputActions inputActions;
     
@@ -21,16 +27,15 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions
         inputActions = new InputActions();
         inputActions.Locomotion.SetCallbacks(this);
         inputActions.Locomotion.Enable();
+        inputActions.Attacks.SetCallbacks(this);
+        inputActions.Attacks.Enable();
+
     }
 
     private void OnDisable()
     {
         inputActions.Locomotion.Disable();
-    }
-
-    public void Update()
-    {
-        Debug.Log(horizontalMove);
+        inputActions.Attacks.Disable();
     }
 
 
@@ -45,5 +50,46 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions
             return;
         
         OnJumpPerformed?.Invoke();
+    }
+
+    public void OnWeak(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+        
+        OnWeakPerformed?.Invoke();
+    }
+    
+    public void OnWeakUp(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+        OnWeakUpPerformed?.Invoke();
+    }
+
+    public void OnWeakSide(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+        OnWeakSidePerformed?.Invoke();
+    }
+    
+    public void OnWeakDown(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+        OnWeakDownPerformed?.Invoke();
+    }
+
+    public void OnShield(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            shielding = true;
+        }
+        else
+        {
+            shielding = false;
+        }
     }
 }

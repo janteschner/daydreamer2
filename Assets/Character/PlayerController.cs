@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         _inputReader.OnJumpPerformed += HandleJump;
+        _inputReader.OnWeakPerformed += HandleWeak;
+        _inputReader.OnWeakUpPerformed += HandleWeakUp;
+        _inputReader.OnWeakSidePerformed += HandleWeakSide;
+        _inputReader.OnWeakDownPerformed += HandleWeakDown;
+            ;
     }
 
     void HandleJump()
@@ -28,6 +33,24 @@ public class PlayerController : MonoBehaviour
         }
 
     }
+    
+    void HandleWeak()
+    {
+        Debug.Log("Weak!");
+    }
+    
+    void HandleWeakUp()
+    {
+        Debug.Log("Weak Up!");
+    }
+    void HandleWeakSide()
+    {
+        Debug.Log("Weak Side!");
+    }
+    void HandleWeakDown()
+    {
+        Debug.Log("Weak Down!");
+    }
 
     // Update is called once per frame
     void Update()
@@ -37,7 +60,22 @@ public class PlayerController : MonoBehaviour
         {
             _verticalVelocity += gravity * Time.deltaTime;
         }
+        
+        CheckHeadBump();
 
         _characterController.Move(new Vector3(_horizontalVelocity, _verticalVelocity, 0f) * Time.deltaTime);
+    }
+
+    void CheckHeadBump()
+    {
+        //TODO: Implement CheckHeadBump
+        // RaycastHit hit;
+        // Vector3 start = transform.position + new Vector3(0, 0.5f * _characterController.height, 0);
+        // Vector3 end = start + Vector3.up * 0.01f;
+        // if (Physics.CapsuleCast(start, end, 0.1f, Vector3.up, out hit))
+        // {
+        //     // Debug.Log("HIT!");
+        // }
+        //
     }
 }
