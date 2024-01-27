@@ -441,6 +441,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Jane_Doe
       objectReference: {fileID: 0}
+    - target: {fileID: 1263744825790667497, guid: b5f37b9eb898e8c4fb848cddd766fc90, type: 3}
+      propertyPath: damageAmount
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 1908723814089503886, guid: b5f37b9eb898e8c4fb848cddd766fc90, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.92
@@ -1714,7 +1718,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370964836}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
