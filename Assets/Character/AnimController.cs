@@ -26,14 +26,16 @@ public class AnimController : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
         input = gameObject.GetComponent<InputReader>();
 
+        audioCollection.PlayAudioSource(EAudioType.Narration_ThisIsJane, 0.9f, false);
         System.Random rand = new System.Random();
+        Time.timeScale = 0.0f;
+
 
         input.OnWeakPerformed += HandleWeak;
         input.OnWeakUpPerformed += HandleWeakUp;
         input.OnWeakSidePerformed += HandleWeakSide;
         input.OnWeakDownPerformed += HandleWeakDown;
 
-        audioCollection.PlayAudioSource(EAudioType.NarrationOpening, 0.9f);
 
     }
 

@@ -53,12 +53,12 @@ public class PlayerController : MonoBehaviour
         _inputReader.OnWeakUpPerformed += HandleWeakUp;
         _inputReader.OnWeakSidePerformed += HandleWeakSide;
         _inputReader.OnWeakDownPerformed += HandleWeakDown;
+
     }
 
     void HandleStarter()
     {
-        _yTargetRotation = 180.0f;
-        LookInDirection(_yTargetRotation);
+        Time.timeScale = 1.0f;
     }
 
     void HandleJump()

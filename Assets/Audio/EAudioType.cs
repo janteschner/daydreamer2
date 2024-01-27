@@ -13,5 +13,6 @@ public enum EAudioType
     Narration_ThatsGonnaLeaveAMark,
     Narration_GoodOne,
     Narration_EatPie,
-    Narration_Stop
+    Narration_Stop,
+    Narration_Opening
 }
