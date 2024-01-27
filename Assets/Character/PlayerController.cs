@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     void HandleWeakUp()
     {
         Debug.Log("Weak Up!");
+        OnomatopoeiaSpawner.Instance.InstantiateAt(this.transform.position);
     }
     void HandleWeakSide()
     {
