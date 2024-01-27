@@ -78,7 +78,7 @@ public class PlayerController : MonoBehaviour
     void HandleWeakUp()
     {
         Debug.Log("Weak Up!");
-        OnomatopoeiaSpawner.Instance.InstantiateAt(this.transform.position + new Vector3(0f, 1f, 0f), 0.4f);
+        //OnomatopoeiaSpawner.Instance.InstantiateAt(this.transform.position + new Vector3(0f, 1f, 0f), 0.4f);
     }
     void HandleWeakSide()
     {
