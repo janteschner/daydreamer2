@@ -24,8 +24,11 @@ public class Train : MonoBehaviour
 
     private void Update()
     {
-        transform.Translate(transform.right * (speed * Time.deltaTime));
-        _elapsedLifetime += Time.deltaTime;
+        if (!InputReader.Instance.menuOpen)
+        {
+            transform.Translate(transform.right * (speed * Time.deltaTime));
+            _elapsedLifetime += Time.deltaTime;
+        }
         if (_elapsedLifetime > lifetime)
         {
             Destroy(this);

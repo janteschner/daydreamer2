@@ -21,7 +21,20 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
 
     private InputActions inputActions;
     
-    
+    public static InputReader Instance { get; private set; }
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            Instance = this; 
+        }
+    }
+
     private void OnEnable()
     {
         if (inputActions != null)
