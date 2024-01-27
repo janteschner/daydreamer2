@@ -34,6 +34,13 @@ public class TrainSpawner : MonoBehaviour
 
     void SpawnTrain()
     {
+        TriggerAudioCollection.Instance.PlayAudioSource(EAudioType.SFX_Train_Annoucement, 1, true);
         Instantiate(trainPrefab, transform);
+        StartCoroutine(SecondSound());
+    }
+    private IEnumerator SecondSound()
+    {
+        yield return new WaitForSeconds(3f);
+        TriggerAudioCollection.Instance.PlayAudioSource(EAudioType.SFX_Train, 1, true);
     }
 }
