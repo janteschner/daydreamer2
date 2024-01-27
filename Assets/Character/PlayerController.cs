@@ -42,8 +42,10 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         _inputReader= GetComponent<InputReader>();
         _characterController= GetComponent<CharacterController>();
+
 
         _inputReader.OnMenuOpenPerformed += HandleStarter;
         _inputReader.OnJumpPerformed += HandleJump;
