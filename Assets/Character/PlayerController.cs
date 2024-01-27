@@ -148,7 +148,7 @@ public class PlayerController : MonoBehaviour
     {
         _yRotation = Mathf.SmoothDamp(_yRotation, targetRotation,
            ref _yRotationSmoothing, rotationSmoothingTime);
-        this.transform.rotation = Quaternion.Euler(0, _yRotation, 0);
+        this.transform.rotation = Quaternion.Euler(0, _yRotation + 0.002f, 0);
     }
 
     public void GameOver()

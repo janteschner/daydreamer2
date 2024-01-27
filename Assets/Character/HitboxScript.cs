@@ -30,6 +30,7 @@ public class HitboxScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!other) return;
         if (_alreadyHit.Contains(other)) return;
         _alreadyHit.Append(other);
         Debug.Log("Hitbox collided!");
