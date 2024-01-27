@@ -17,7 +17,7 @@ public class AnimController : MonoBehaviour
     [SerializeField] private String TriggerShoot = "Shoot";
     [SerializeField] private String TriggerMelee = "Melee";
     [SerializeField] private String TriggerThrow = "Throw";
-    [SerializeField] private String TriggerX = "Shoot";
+    [SerializeField] private String TriggerHit = "Hit";
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +54,7 @@ public class AnimController : MonoBehaviour
 
     private void HandleWeak()
     {
+        animator.SetTrigger(TriggerHit);
     }
 
     // Update is called once per frame

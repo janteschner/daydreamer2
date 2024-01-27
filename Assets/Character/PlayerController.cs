@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -23,6 +24,20 @@ public class PlayerController : MonoBehaviour
 
     private InputReader _inputReader;
     private CharacterController _characterController;
+    public static PlayerController Instance { get; private set; }
+
+    
+    private void Awake()
+    {
+        if (Instance != null && Instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            Instance = this; 
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -63,7 +78,7 @@ public class PlayerController : MonoBehaviour
     void HandleWeakUp()
     {
         Debug.Log("Weak Up!");
-        OnomatopoeiaSpawner.Instance.InstantiateAt(this.transform.position + new Vector3(0f, 1f, 0f));
+        OnomatopoeiaSpawner.Instance.InstantiateAt(this.transform.position + new Vector3(0f, 1f, 0f), 0.4f);
     }
     void HandleWeakSide()
     {
@@ -72,7 +87,7 @@ public class PlayerController : MonoBehaviour
     void HandleWeakDown()
     {
         Debug.Log("Weak Down!");
-        ApplyKnockback(new Vector2(13, 30));
+        ApplyKnockback(new Vector2(13, 25));
     }
 
     // Update is called once per frame
@@ -101,9 +116,14 @@ public class PlayerController : MonoBehaviour
 
             _characterController.Move(new Vector3(_horizontalVelocity, _verticalVelocity, 0f) * Time.deltaTime);
         }
+
+        if (transform.position.y < -20f)
+        {
+            GameOver();
+        }
     }
 
-    void ApplyKnockback(Vector2 direction)
+    public void ApplyKnockback(Vector2 direction)
     {
         _verticalVelocity = direction.y;
         _horizontalVelocity = direction.x;
@@ -128,5 +148,10 @@ public class PlayerController : MonoBehaviour
         _yRotation = Mathf.SmoothDamp(_yRotation, targetRotation,
            ref _yRotationSmoothing, rotationSmoothingTime);
         this.transform.rotation = Quaternion.Euler(0, _yRotation, 0);
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
