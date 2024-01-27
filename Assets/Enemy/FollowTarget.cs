@@ -26,7 +26,6 @@ public class FollowTarget : MonoBehaviour
         _nav = GetComponent<NavMeshAgent>();
         _nav.speed = speed;
         InvokeRepeating(nameof(UpdateNavigation), 0f, updateRate);
-
     }
 
     void UpdateNavigation()
@@ -39,5 +38,13 @@ public class FollowTarget : MonoBehaviour
     void Update()
     {
         
+    }
+    
+    public void ApplyKnockback(Vector2 direction)
+    {
+        Debug.Log("Applying Knockback!");
+        var rigidbody = GetComponent<Rigidbody>();
+        rigidbody.AddForce(new Vector3(direction.x, direction.y, 0f), ForceMode.Impulse);
+        // _characterController.Move(new Vector3(_horizontalVelocity, _verticalVelocity, 0f) * Time.deltaTime);
     }
 }

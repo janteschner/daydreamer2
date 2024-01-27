@@ -14,68 +14,60 @@ public class CombatController : MonoBehaviour
     [SerializeField] private Collider Collider;
     [SerializeField] private LayerMask AttackLayer;
 
-    [SerializeField] bool isPlayer = false, isEnemy = false;
-    [SerializeField] GameObject spawnPoint;
+    [SerializeField] bool isPlayer = false;
 
 
     public float Health { get => health; set => health = value; }
 
 
-
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        //Debug.Log(collision.gameObject.layer);
-        //if(collision.gameObject.layer == 8)
-        //{
-        //    collision.gameObject.transform.SetParent(transform, false);
-        //    collision.gameObject.transform.position= Vector3.zero;
-        //}
-
-        //if(collision.gameObject.layer == 7)
-        //{
-        //    Health -= 10;
-        //}
-
-        //if(collision.gameObject.layer == 6)
-        //{
-
-        //}
-
-    }
-
     private void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Trigger Enter!: " + collision.gameObject.layer);
-        Debug.Log("isPlayer!: " + isPlayer);
-        if (collision.gameObject.layer == 8)
-        {
-            collision.gameObject.transform.SetParent(spawnPoint.transform, false);
-            collision.gameObject.transform.position = spawnPoint.transform.position;
-        }
-
         if (collision.gameObject.layer != gameObject.layer)
         {
-            if ((collision.gameObject.layer == LayerMask.GetMask("Enemy")) ||
-                (collision.gameObject.layer == LayerMask.GetMask("Player")))
+            Debug.Log("Collision on different layers!");
+
+            if (collision.gameObject.layer is 7)
             {
+                //Enemy hit!
+                Debug.Log("Enemy was hit!!");
                 var otherCombatController = collision.gameObject.GetComponent<CombatController>();
-                otherCombatController.TakeDamage(10);
-            }
+                if (otherCombatController)
+                {
+                    otherCombatController.TakeDamage(20);
+                }
+                Debug.Log("Trying to find FollowTarget!");
+                var otherFollowTarget = collision.gameObject.GetComponent<FollowTarget>();
+                if (otherFollowTarget)
+                {
+                    Debug.Log("FollowTarget foud!");
+                    otherFollowTarget.ApplyKnockback(new Vector2(20, 0));
+                } 
+                else
+                {
+                    Debug.Log("No FollowTarget found!");
+                }            }
+            // if (collision.gameObject.layer is 6)
+            // {
+            //     //Player hit!
+            //     Debug.Log("Player was hit!!");
+            //     var otherCombatController = collision.gameObject.GetComponent<CombatController>();
+            //     if (otherCombatController)
+            //     {
+            //         otherCombatController.TakeDamage(20);
+            //     }
+            //     
+            //     PlayerController.Instance.ApplyKnockback(new Vector2(10, 10));
+            // }
+        }
+        else
+        {
+            Debug.Log("Collision is on same layer...");
         }
     }
 
     public void TakeDamage(float amount)
     {
+        Debug.Log(isPlayer ? "Player taking damage!" : "Enemy taking damage!");
         if (Health > 0)
         {
             Health -= amount;
@@ -92,22 +84,5 @@ public class CombatController : MonoBehaviour
                 Destroy(gameObject);
             }
         }
-    }
-
-    private void CheckCollision()
-    {
-        RaycastHit hit;
-        // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit, Mathf.Infinity, AttackLayer))
-        {
-            // Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.yellow);
-            // Debug.Log("Did Hit");
-        }
-        else
-        {
-            // Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.white);
-            // Debug.Log("Did not Hit");
-        }
-
     }
 }
