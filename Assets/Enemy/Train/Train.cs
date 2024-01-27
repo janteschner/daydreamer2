@@ -13,10 +13,9 @@ public class Train : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.gameObject);
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerController>().ApplyKnockback(new Vector2(14, 25));
+            // other.gameObject.GetComponent<PlayerController>().ApplyKnockback(new Vector2(14, 25));
             OnomatopoeiaSpawner.Instance.InstantiateAt(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position), 0.8f);
                 
         }

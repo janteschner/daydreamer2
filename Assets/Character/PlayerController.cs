@@ -117,6 +117,7 @@ public class PlayerController : MonoBehaviour
             _characterController.Move(new Vector3(_horizontalVelocity, _verticalVelocity, 0f) * Time.deltaTime);
         }
 
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         if (transform.position.y < -20f)
         {
             GameOver();
