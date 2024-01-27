@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -101,6 +102,11 @@ public class PlayerController : MonoBehaviour
 
             _characterController.Move(new Vector3(_horizontalVelocity, _verticalVelocity, 0f) * Time.deltaTime);
         }
+
+        if (transform.position.y < -20f)
+        {
+            GameOver();
+        }
     }
 
     public void ApplyKnockback(Vector2 direction)
@@ -128,5 +134,10 @@ public class PlayerController : MonoBehaviour
         _yRotation = Mathf.SmoothDamp(_yRotation, targetRotation,
            ref _yRotationSmoothing, rotationSmoothingTime);
         this.transform.rotation = Quaternion.Euler(0, _yRotation, 0);
+    }
+
+    void GameOver()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
