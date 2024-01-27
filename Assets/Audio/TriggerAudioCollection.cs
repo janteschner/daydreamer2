@@ -36,4 +36,12 @@ public class TriggerAudioCollection : MonoBehaviour
             source.Play();
         }
     }
+
+    public void PlayAudioSource(EAudioType audioSource, Vector3 position)
+    {
+        if (PlayAudio)
+        {
+            AudioSource.PlayClipAtPoint(AudioClipList[(int)audioSource], position);
+        }
+    }
 }
