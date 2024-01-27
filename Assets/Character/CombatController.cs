@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 public class CombatController : MonoBehaviour
 {
@@ -55,33 +56,42 @@ public class CombatController : MonoBehaviour
     private void OnTriggerEnter(Collider collision)
     {
         Debug.Log("Trigger Enter!: " + collision.gameObject.layer);
+        Debug.Log("isPlayer!: " + isPlayer);
         if (collision.gameObject.layer == 8)
         {
             collision.gameObject.transform.SetParent(spawnPoint.transform, false);
             collision.gameObject.transform.position = spawnPoint.transform.position;
         }
-        
-        if ((isPlayer && collision.gameObject.layer == LayerMask.GetMask("Enemy")) || (isEnemy && collision.gameObject.layer == LayerMask.GetMask("Player")))
+
+        if (collision.gameObject.layer != gameObject.layer)
         {
-            var otherCombatController = collision.gameObject.GetComponent<CombatController>();
-            if (otherCombatController.Health > 0)
+            if ((collision.gameObject.layer == LayerMask.GetMask("Enemy")) ||
+                (collision.gameObject.layer == LayerMask.GetMask("Player")))
             {
-                otherCombatController.Health -= 10;
-                OnomatopoeiaSpawner.Instance.InstantiateAt(collision.transform.position);
-            }
-            if(otherCombatController.Health <= 0)
-            {
-                if (otherCombatController.isPlayer)
-                {
-                    PlayerController.Instance.GameOver();
-                }
-                else
-                {
-                    Destroy(gameObject);
-                }
+                var otherCombatController = collision.gameObject.GetComponent<CombatController>();
+                otherCombatController.TakeDamage(10);
             }
         }
+    }
 
+    public void TakeDamage(float amount)
+    {
+        if (Health > 0)
+        {
+            Health -= amount;
+            OnomatopoeiaSpawner.Instance.InstantiateAt(transform.position);
+        }
+        if(Health <= 0)
+        {
+            if (isPlayer)
+            {
+                PlayerController.Instance.GameOver();
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     private void CheckCollision()
