@@ -20,8 +20,9 @@ public class OnomatopoeiaSpawner : MonoBehaviour
         }
     }
     
-    public void InstantiateAt(Vector3 position)
+    public void InstantiateAt(Vector3 position, float size = 0.35f)
     {
-        Instantiate(onomatopoeiaPrefab, position, Quaternion.identity);
+        var newObject = Instantiate(onomatopoeiaPrefab, new Vector3(position.x, position.y, -0.5f), Quaternion.identity);
+        newObject.transform.localScale = new Vector3(size, size, size);
     }
 }

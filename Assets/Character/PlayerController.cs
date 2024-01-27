@@ -63,7 +63,7 @@ public class PlayerController : MonoBehaviour
     void HandleWeakUp()
     {
         Debug.Log("Weak Up!");
-        OnomatopoeiaSpawner.Instance.InstantiateAt(this.transform.position + new Vector3(0f, 1f, 0f));
+        OnomatopoeiaSpawner.Instance.InstantiateAt(this.transform.position + new Vector3(0f, 1f, 0f), 0.4f);
     }
     void HandleWeakSide()
     {
@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
     void HandleWeakDown()
     {
         Debug.Log("Weak Down!");
-        ApplyKnockback(new Vector2(13, 30));
+        ApplyKnockback(new Vector2(13, 25));
     }
 
     // Update is called once per frame
@@ -103,7 +103,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void ApplyKnockback(Vector2 direction)
+    public void ApplyKnockback(Vector2 direction)
     {
         _verticalVelocity = direction.y;
         _horizontalVelocity = direction.x;
