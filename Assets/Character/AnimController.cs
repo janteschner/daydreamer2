@@ -9,7 +9,7 @@ public class AnimController : MonoBehaviour
     private Animator animator;
     private CharacterController controller;
     private InputReader input;
-    private TriggerAudioCollection audioCollection;
+    [SerializeField] private TriggerAudioCollection audioCollection;
 
     [SerializeField] private String Velocity = "Velocity";
     [SerializeField] private String AirDirection= "AirDirection";
@@ -25,7 +25,6 @@ public class AnimController : MonoBehaviour
         animator = gameObject.GetComponentInChildren<Animator>();
         controller = gameObject.GetComponent<CharacterController>();
         input = gameObject.GetComponent<InputReader>();
-        audioCollection = GameObject.FindGameObjectWithTag("Sound").GetComponent<TriggerAudioCollection>();
 
         System.Random rand = new System.Random();
 
