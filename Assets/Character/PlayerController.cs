@@ -42,10 +42,8 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         _inputReader= GetComponent<InputReader>();
         _characterController= GetComponent<CharacterController>();
-
 
         _inputReader.OnMenuOpenPerformed += HandleStarter;
         _inputReader.OnJumpPerformed += HandleJump;
@@ -78,7 +76,6 @@ public class PlayerController : MonoBehaviour
     void HandleWeakUp()
     {
         Debug.Log("Weak Up!");
-        OnomatopoeiaSpawner.Instance.InstantiateAt(this.transform.position + new Vector3(0f, 1f, 0f), 0.4f);
     }
     void HandleWeakSide()
     {
@@ -87,7 +84,8 @@ public class PlayerController : MonoBehaviour
     void HandleWeakDown()
     {
         Debug.Log("Weak Down!");
-        ApplyKnockback(new Vector2(13, 25));
+        var pianoSummoner = GetComponent<SummonPiano>();
+        pianoSummoner.SummonInFrontOfParent();
     }
 
     // Update is called once per frame

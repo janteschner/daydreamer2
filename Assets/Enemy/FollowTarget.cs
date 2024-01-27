@@ -31,7 +31,10 @@ public class FollowTarget : MonoBehaviour
     void UpdateNavigation()
     {
         _destination = followTarget.transform.position;
-        _nav.SetDestination(_destination);
+        if (_nav.isOnNavMesh)
+        {
+            _nav.SetDestination(_destination);
+        }
     }
 
     // Update is called once per frame

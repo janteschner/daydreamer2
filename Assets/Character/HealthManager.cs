@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class HealthManager : MonoBehaviour
 {
@@ -16,16 +18,19 @@ public class HealthManager : MonoBehaviour
                 get => health;
         }
 
-        public void TakeDamage(float amount)
+        public bool TakeDamage(float amount, DamageType type)
         {
                 health -= amount;
+                Debug.Log("Took "+ amount + " damage. Remaining health: "+ health);
                 if (health <= 0)
                 {
-                        Die();
+                        Die(type);
                 }
+
+                return health > 0;
         }
 
-        private void Die()
+        private void Die(DamageType type)
         {
                 if (isPlayer)
                 {
@@ -33,7 +38,25 @@ public class HealthManager : MonoBehaviour
                 }
                 else
                 {
-                        Destroy(gameObject);
+                        switch(type)
+                        {
+                                case DamageType.Crush:
+                                {
+                                        gameObject.AddComponent<Death_Flatten>();
+                                        break;
+                                }
+                                case DamageType.KnockbackLeft:
+                                case DamageType.KnockbackRight:
+                                {
+                                        gameObject.AddComponent<Death_FlyIntoScreen>();
+                                        break;
+                                }
+                                default:
+                                {
+                                        Destroy(gameObject);
+                                        break;
+                                }
+                        }
                 }
         }
 

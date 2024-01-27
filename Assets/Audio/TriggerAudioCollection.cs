@@ -6,22 +6,34 @@ using UnityEngine.Windows;
 
 public class TriggerAudioCollection : MonoBehaviour
 {
+    
+    public static TriggerAudioCollection Instance { get; private set; }
+
     [SerializeField] public List<AudioClip> AudioClipList;
-    [SerializeField] AudioSource Source;
+    [SerializeField] AudioSource StorytellingSource;
+    [SerializeField] AudioSource SFXSource;
     [SerializeField] bool PlayAudio;
 
-    private void Start()
+    private void Awake()
     {
-        Source = GetComponent<AudioSource>();
+        if (Instance != null && Instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            Instance = this; 
+        }
     }
 
     public void PlayAudioSource(EAudioType audioSource, float volume, bool isSFX)
     {
         if (PlayAudio)
         {
-            Source.clip = AudioClipList[(int)audioSource];
-            Source.volume = volume;
-            Source.Play();
+            var source = isSFX ? SFXSource : StorytellingSource;
+            source.clip = AudioClipList[(int)audioSource];
+            source.volume = volume;
+            source.Play();
         }
     }
 }

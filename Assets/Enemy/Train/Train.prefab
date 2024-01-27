@@ -130,6 +130,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 4847372498466380513}
     m_Modifications:
     - target: {fileID: 3089054413121195365, guid: 5acd5b92b131a4c4db5b006918d2e2f6, type: 3}
+      propertyPath: damageType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3089054413121195365, guid: 5acd5b92b131a4c4db5b006918d2e2f6, type: 3}
       propertyPath: affectsPlayer
       value: 1
       objectReference: {fileID: 0}

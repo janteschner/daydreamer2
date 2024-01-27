@@ -14,5 +14,12 @@ public enum EAudioType
     Narration_GoodOne,
     Narration_EatPie,
     Narration_Stop,
-    Narration_Opening
+    Narration_Opening,
+    SFX_Hitting_Metal,
+    SFX_Piano_Crash,
+    SFX_Jump,
+    SFX_Miss,
+    SFX_Punch,
+    SFX_Train,
+    SFX_Train_Annoucement
 }

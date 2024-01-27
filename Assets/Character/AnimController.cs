@@ -18,6 +18,7 @@ public class AnimController : MonoBehaviour
     [SerializeField] private String TriggerMelee = "Melee";
     [SerializeField] private String TriggerThrow = "Throw";
     [SerializeField] private String TriggerHit = "Hit";
+    [SerializeField] private String TriggerHorizontalAttack = "HorizontalAttack";
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +27,7 @@ public class AnimController : MonoBehaviour
         controller = gameObject.GetComponent<CharacterController>();
         input = gameObject.GetComponent<InputReader>();
 
-        audioCollection.PlayAudioSource(EAudioType.Narration_ThisIsJane, 0.9f, false);
+        // audioCollection.PlayAudioSource(EAudioType.Narration_ThisIsJane, 0.9f, false);
         System.Random rand = new System.Random();
         Time.timeScale = 0.0f;
 
@@ -41,12 +42,13 @@ public class AnimController : MonoBehaviour
 
     private void HandleWeakDown()
     {
-        animator.SetTrigger(TriggerShoot);
     }
 
     private void HandleWeakSide()
     {
-        animator.SetTrigger(TriggerMelee);
+        // animator.SetTrigger(TriggerMelee);
+        animator.SetTrigger(TriggerHorizontalAttack);
+
     }
 
     private void HandleWeakUp()
