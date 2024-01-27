@@ -44,6 +44,15 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Menu"",
+                    ""type"": ""Button"",
+                    ""id"": ""88ccecb9-3f7e-4c69-a934-5a42d7625b9f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -110,6 +119,28 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7e0560f1-b876-46d1-bcff-2f5a0f492558"",
+                    ""path"": ""<Keyboard>/p"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4ae0e34c-d923-4530-9611-79a47f3075be"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Menu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -494,6 +525,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
         m_Locomotion = asset.FindActionMap("Locomotion", throwIfNotFound: true);
         m_Locomotion_Move = m_Locomotion.FindAction("Move", throwIfNotFound: true);
         m_Locomotion_Jump = m_Locomotion.FindAction("Jump", throwIfNotFound: true);
+        m_Locomotion_Menu = m_Locomotion.FindAction("Menu", throwIfNotFound: true);
         // Attacks
         m_Attacks = asset.FindActionMap("Attacks", throwIfNotFound: true);
         m_Attacks_Weak = m_Attacks.FindAction("Weak", throwIfNotFound: true);
@@ -564,12 +596,14 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     private List<ILocomotionActions> m_LocomotionActionsCallbackInterfaces = new List<ILocomotionActions>();
     private readonly InputAction m_Locomotion_Move;
     private readonly InputAction m_Locomotion_Jump;
+    private readonly InputAction m_Locomotion_Menu;
     public struct LocomotionActions
     {
         private @InputActions m_Wrapper;
         public LocomotionActions(@InputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Locomotion_Move;
         public InputAction @Jump => m_Wrapper.m_Locomotion_Jump;
+        public InputAction @Menu => m_Wrapper.m_Locomotion_Menu;
         public InputActionMap Get() { return m_Wrapper.m_Locomotion; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -585,6 +619,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @Menu.started += instance.OnMenu;
+            @Menu.performed += instance.OnMenu;
+            @Menu.canceled += instance.OnMenu;
         }
 
         private void UnregisterCallbacks(ILocomotionActions instance)
@@ -595,6 +632,9 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @Menu.started -= instance.OnMenu;
+            @Menu.performed -= instance.OnMenu;
+            @Menu.canceled -= instance.OnMenu;
         }
 
         public void RemoveCallbacks(ILocomotionActions instance)
@@ -694,6 +734,7 @@ public partial class @InputActions: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnMenu(InputAction.CallbackContext context);
     }
     public interface IAttacksActions
     {

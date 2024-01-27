@@ -14,6 +14,9 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
     public Action OnWeakSidePerformed;
     public Action OnWeakDownPerformed;
 
+    public Action OnMenuOpenPerformed;
+
+    public bool menuOpen;
     public bool shielding;
 
     private InputActions inputActions;
@@ -91,5 +94,13 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
         {
             shielding = false;
         }
+    }
+
+    public void OnMenu(InputAction.CallbackContext context)
+    {
+        if(context.performed)
+            OnMenuOpenPerformed?.Invoke();
+
+        menuOpen = (menuOpen) ? false : true;
     }
 }

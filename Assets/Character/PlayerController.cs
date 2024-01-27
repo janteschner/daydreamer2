@@ -4,9 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
-{
-    [SerializeField] private InputReader _inputReader;
-    [SerializeField] private CharacterController _characterController;
+{ 
     public float speed = 10.0f;
     
     public float gravity = -9.81f;
@@ -18,19 +16,34 @@ public class PlayerController : MonoBehaviour
     private float _horizontalVelocitySmoothing;
 
     private float _yRotation = 0f;
+    private float _yRotationLeft = 270f;
+    private float _yRotationRight = 90f;
     private float _yTargetRotation = 0f;
     private float _yRotationSmoothing;
 
+    private InputReader _inputReader;
+    private CharacterController _characterController;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        _inputReader= GetComponent<InputReader>();
+        _characterController= GetComponent<CharacterController>();
+
+
+        _inputReader.OnMenuOpenPerformed += HandleStarter;
         _inputReader.OnJumpPerformed += HandleJump;
         _inputReader.OnWeakPerformed += HandleWeak;
         _inputReader.OnWeakUpPerformed += HandleWeakUp;
         _inputReader.OnWeakSidePerformed += HandleWeakSide;
         _inputReader.OnWeakDownPerformed += HandleWeakDown;
-            ;
+    }
+
+    void HandleStarter()
+    {
+        _yTargetRotation = 180.0f;
+        LookInDirection(_yTargetRotation);
     }
 
     void HandleJump()
@@ -63,27 +76,29 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float targetHorizontalVelocity = _inputReader.horizontalMove * speed;
-        if (_characterController.isGrounded || Mathf.Abs(targetHorizontalVelocity) > 0.05f)
+        if (!_inputReader.menuOpen)
         {
-            _horizontalVelocity = Mathf.SmoothDamp(_horizontalVelocity, targetHorizontalVelocity, ref _horizontalVelocitySmoothing, horizontalFrictionTime);
-        }
-        if (!_characterController.isGrounded)
-        {
-            _verticalVelocity += gravity * Time.deltaTime;
-        }
+            float targetHorizontalVelocity = _inputReader.horizontalMove * speed;
+            if (_characterController.isGrounded || Mathf.Abs(targetHorizontalVelocity) > 0.05f)
+            {
+                _horizontalVelocity = Mathf.SmoothDamp(_horizontalVelocity, targetHorizontalVelocity, ref _horizontalVelocitySmoothing, horizontalFrictionTime);
+            }
+            if (!_characterController.isGrounded)
+            {
+                _verticalVelocity += gravity * Time.deltaTime;
+            }
 
-        if (Mathf.Abs(targetHorizontalVelocity) > 0.02f)
-        {
-            _yTargetRotation = targetHorizontalVelocity > 0 ? 0 : 180;
-        }
-        _yRotation = Mathf.SmoothDamp(_yRotation, _yTargetRotation,
-            ref _yRotationSmoothing, rotationSmoothingTime);
-        this.transform.rotation = Quaternion.Euler(0, _yRotation, 0);
-        
-        CheckHeadBump();
+            if (Mathf.Abs(targetHorizontalVelocity) > 0.02f)
+            {
+                _yTargetRotation = (targetHorizontalVelocity > 0) ? _yRotationRight : _yRotationLeft;
+            }
 
-        _characterController.Move(new Vector3(_horizontalVelocity, _verticalVelocity, 0f) * Time.deltaTime);
+
+            LookInDirection(_yTargetRotation);
+            CheckHeadBump();
+
+            _characterController.Move(new Vector3(_horizontalVelocity, _verticalVelocity, 0f) * Time.deltaTime);
+        }
     }
 
     void CheckHeadBump()
@@ -97,5 +112,12 @@ public class PlayerController : MonoBehaviour
         //     // Debug.Log("HIT!");
         // }
         //
+    }
+
+    void LookInDirection(float targetRotation)
+    {
+        _yRotation = Mathf.SmoothDamp(_yRotation, targetRotation,
+           ref _yRotationSmoothing, rotationSmoothingTime);
+        this.transform.rotation = Quaternion.Euler(0, _yRotation, 0);
     }
 }
