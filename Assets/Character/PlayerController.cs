@@ -53,12 +53,12 @@ public class PlayerController : MonoBehaviour
         _inputReader.OnWeakUpPerformed += HandleWeakUp;
         _inputReader.OnWeakSidePerformed += HandleWeakSide;
         _inputReader.OnWeakDownPerformed += HandleWeakDown;
+
     }
 
     void HandleStarter()
     {
-        _yTargetRotation = 180.0f;
-        LookInDirection(_yTargetRotation);
+        Time.timeScale = 1.0f;
     }
 
     void HandleJump()
@@ -117,6 +117,7 @@ public class PlayerController : MonoBehaviour
             _characterController.Move(new Vector3(_horizontalVelocity, _verticalVelocity, 0f) * Time.deltaTime);
         }
 
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         if (transform.position.y < -20f)
         {
             GameOver();

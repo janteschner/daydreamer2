@@ -52,6 +52,5 @@ public class FollowTarget : MonoBehaviour
         Debug.Log("Applying Knockback!");
         var rigidbody = GetComponent<Rigidbody>();
         rigidbody.AddForce(new Vector3(direction.x, direction.y, 0f), ForceMode.Impulse);
-        // _characterController.Move(new Vector3(_horizontalVelocity, _verticalVelocity, 0f) * Time.deltaTime);
     }
 }

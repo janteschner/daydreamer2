@@ -9,18 +9,6 @@ public class Train : MonoBehaviour
     public float lifetime = 10f;
 
     private float _elapsedLifetime = 0f;
-    
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log(other.gameObject);
-        if (other.gameObject.CompareTag("Player"))
-        {
-            other.gameObject.GetComponent<PlayerController>().ApplyKnockback(new Vector2(14, 25));
-            OnomatopoeiaSpawner.Instance.InstantiateAt(other.gameObject.GetComponent<Collider>().ClosestPointOnBounds(transform.position), 0.8f);
-                
-        }
-    }
 
     private void Update()
     {
