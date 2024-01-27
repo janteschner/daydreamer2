@@ -1263,6 +1263,7 @@ MonoBehaviour:
     m_Bits: 192
   isPlayer: 0
   isEnemy: 1
+  spawnPoint: {fileID: 0}
 --- !u!1 &1481635510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1806,6 +1807,7 @@ MonoBehaviour:
     m_Bits: 128
   isPlayer: 1
   isEnemy: 0
+  spawnPoint: {fileID: 0}
 --- !u!54 &2101869090
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1850,12 +1852,12 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1
   m_Height: 1
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.86, z: 0.99}
 --- !u!1001 &3602009367907720991
 PrefabInstance:
   m_ObjectHideFlags: 0

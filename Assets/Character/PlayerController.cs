@@ -24,6 +24,20 @@ public class PlayerController : MonoBehaviour
 
     private InputReader _inputReader;
     private CharacterController _characterController;
+    public static PlayerController Instance { get; private set; }
+
+    
+    private void Awake()
+    {
+        if (Instance != null && Instance != this) 
+        { 
+            Destroy(this); 
+        } 
+        else 
+        { 
+            Instance = this; 
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -136,7 +150,7 @@ public class PlayerController : MonoBehaviour
         this.transform.rotation = Quaternion.Euler(0, _yRotation, 0);
     }
 
-    void GameOver()
+    public void GameOver()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
