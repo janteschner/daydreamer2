@@ -40,6 +40,9 @@ public class CombatController : MonoBehaviour
                 if (otherFollowTarget)
                 {
                     Debug.Log("FollowTarget foud!");
+                    var closest = collision.ClosestPointOnBounds(collision.transform.position);
+                    Debug.Log("closest: " + closest);
+                    Debug.Log("position: " + collision.transform.position);
                     otherFollowTarget.ApplyKnockback(new Vector2(20, 0));
                 } 
                 else

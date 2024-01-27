@@ -25,6 +25,11 @@ public class TrainSpawner : MonoBehaviour
             SpawnTrain();
             _nextSpawn = Time.time + Random.Range(minDelay, maxDelay);
         }
+
+        if (InputReader.Instance.menuOpen)
+        {
+            _nextSpawn += Time.deltaTime;
+        }
     }
 
     void SpawnTrain()
