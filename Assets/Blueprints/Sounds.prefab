@@ -142,5 +142,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AudioClipList:
-  - {fileID: 8300000, guid: b6ddd33a6674dc849ab0c77060210681, type: 3}
+  - {fileID: 8300000, guid: 79d54419820649341a0bb41cf2f167d8, type: 3}
+  - {fileID: 8300000, guid: 700fc612c6391174488d344d4a59440b, type: 3}
+  - {fileID: 8300000, guid: a0a760ad4f3c6da4ca6a055b4c4c4736, type: 3}
+  - {fileID: 8300000, guid: 8fb9da1685820e947a95827fde4a00b6, type: 3}
+  - {fileID: 8300000, guid: f0ab78791cfef294c8472e4babd2adc0, type: 3}
+  - {fileID: 8300000, guid: b91ba2fa1732d5149ab18baf98c291c3, type: 3}
+  - {fileID: 8300000, guid: 9bf74af6d4f4c4c46b73f98502accb4a, type: 3}
+  - {fileID: 8300000, guid: 215f07d1f2fb6f54b9da78597465e7f6, type: 3}
+  - {fileID: 8300000, guid: c67178534d03eae4c8d64e64ad09abe4, type: 3}
+  - {fileID: 8300000, guid: b3ed07450ddce5f4592c765b70df22fd, type: 3}
+  - {fileID: 8300000, guid: bc775f2a1e6213441b8b4d778f115c6a, type: 3}
   Source: {fileID: 5328800494456514025}
+  PlayAudio: 0

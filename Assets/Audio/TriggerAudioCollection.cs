@@ -15,7 +15,7 @@ public class TriggerAudioCollection : MonoBehaviour
         Source = GetComponent<AudioSource>();
     }
 
-    public void PlayAudioSource(EAudioType audioSource, float volume)
+    public void PlayAudioSource(EAudioType audioSource, float volume, bool isSFX)
     {
         if (PlayAudio)
         {
