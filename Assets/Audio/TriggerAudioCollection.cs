@@ -7,7 +7,8 @@ using UnityEngine.Windows;
 public class TriggerAudioCollection : MonoBehaviour
 {
     [SerializeField] public List<AudioClip> AudioClipList;
-    AudioSource Source;
+    [SerializeField] AudioSource Source;
+    [SerializeField] bool PlayAudio;
 
     private void Start()
     {
@@ -16,8 +17,11 @@ public class TriggerAudioCollection : MonoBehaviour
 
     public void PlayAudioSource(EAudioType audioSource, float volume)
     {
-        Source.clip = AudioClipList[(int)audioSource];
-        Source.volume = volume;
-        Source.Play();
+        if (PlayAudio)
+        {
+            Source.clip = AudioClipList[(int)audioSource];
+            Source.volume = volume;
+            Source.Play();
+        }
     }
 }
