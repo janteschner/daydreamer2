@@ -1,13 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CameraShake : MonoBehaviour
 {
+    public float strengthMod = 1f;
+    public float durationMod = 1f;
+    private Vector3 startPosition;
+    private float _remainingShakeDuration = 0f;
+    private float _shakeStrength = 1f;
 
-    public AnimationCurve curve;
-    public float shakeTime = 0.5f;
     public static CameraShake Instance { get; private set; }
+    
     
     
     private void Awake()
@@ -22,24 +28,32 @@ public class CameraShake : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        startPosition = transform.position;
+    }
+
     public void Shake(float strength)
     {
-        StartCoroutine(RunCameraShake(strength));
+        _remainingShakeDuration += strength * durationMod;
+        _shakeStrength += strength * strengthMod;
+
     }
-    
-    public IEnumerator RunCameraShake(float strength)
+
+    private void Update()
     {
-        Vector3 startPosition = transform.position;
-        float timeUsed = 0f;
-
-        while (timeUsed < shakeTime)
+        if (_remainingShakeDuration > 0f)
         {
-            timeUsed += Time.deltaTime;
-            float curveMultiplier = curve.Evaluate(timeUsed / (shakeTime * strength));
-            transform.position = startPosition + Random.insideUnitSphere * (curveMultiplier * strength);
-            yield return null;
+            Vector3 randomOffset = Random.insideUnitSphere * _shakeStrength;
+            transform.localPosition = startPosition + randomOffset;
+            _remainingShakeDuration -= Time.deltaTime;
+            _shakeStrength -= Time.deltaTime;
         }
-
-        transform.position = startPosition;
+        else
+        {
+            _remainingShakeDuration = 0f;
+            _shakeStrength = 0f;
+            transform.localPosition = startPosition;
+        }
     }
 }
