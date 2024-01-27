@@ -459,7 +459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd0e32cc9c0a1214d8e2591c145b480f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9
+      value: -0.87
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd0e32cc9c0a1214d8e2591c145b480f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -686,7 +686,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0498137, y: 0.0000000021481275, z: 1.0713917e-10, w: 0.99875855}
+  m_LocalRotation: {x: -0.05582833, y: 0.000000029755844, z: 0.000000001663814, w: 0.9984404}
   m_LocalPosition: {x: -0.000000059604645, y: 2, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -881,7 +881,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 1062665406}
-  m_Follow: {fileID: 1062665406}
+  m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60.000004
     OrthographicSize: 5
@@ -909,7 +909,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1058216347}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0498137, y: 0.0000000021481275, z: 1.0713917e-10, w: 0.99875855}
+  m_LocalRotation: {x: -0.05582833, y: 0.000000029755844, z: 0.000000001663814, w: 0.9984404}
   m_LocalPosition: {x: -0.000000059604645, y: 2, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -955,6 +955,8 @@ MonoBehaviour:
   speed: 7
   gravity: -40
   jumpHeight: 4
+  horizontalFrictionTime: 0.06
+  rotationSmoothingTime: 0.05
 --- !u!114 &1062665403
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -968,6 +970,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalMove: 0
+  shielding: 0
 --- !u!114 &1062665404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1025,6 +1028,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: cc6c3302-21a2-4cdb-ab5d-94f7d2ccbd3b
     m_ActionName: Locomotion/Jump[/Keyboard/space,/DualShock4GamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 07fc1433-cd5f-4786-b004-5e9f3d36c511
+    m_ActionName: Attacks/Weak[/DualShock4GamepadHID/buttonWest,/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 57821626-bc17-4425-9f63-ad79157ec9a9
+    m_ActionName: Attacks/WeakUp[/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/buttonWest,/Keyboard/w,/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8f8033ed-c5c0-4d48-ac86-c783dec0321e
+    m_ActionName: Attacks/WeakSide[/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/buttonWest,/DualShock4GamepadHID/leftStick/right,/Keyboard/a,/Keyboard/j,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3eae82eb-9ff9-4349-83e9-344b84121e24
+    m_ActionName: Attacks/WeakDown[/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/buttonWest,/Keyboard/s,/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 87e31fcb-d61c-4bbd-add5-461facd2f029
+    m_ActionName: Attacks/Shield[/DualShock4GamepadHID/leftShoulder,/DualShock4GamepadHID/leftTrigger,/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Locomotion
@@ -1049,8 +1072,8 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 2
-  m_Radius: 0.5
+  m_Height: 1.6
+  m_Radius: 0.15
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
@@ -1065,7 +1088,7 @@ Transform:
   m_GameObject: {fileID: 1062665401}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.000000059604645, y: 2, z: 0}
+  m_LocalPosition: {x: -0.000000059604645, y: 2.0609088, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1343,6 +1366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   horizontalMove: 0
+  shielding: 0
 --- !u!114 &1672975738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1400,6 +1424,26 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: cc6c3302-21a2-4cdb-ab5d-94f7d2ccbd3b
     m_ActionName: Locomotion/Jump[/Keyboard/space,/DualShock4GamepadHID/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 07fc1433-cd5f-4786-b004-5e9f3d36c511
+    m_ActionName: Attacks/Weak[/DualShock4GamepadHID/buttonWest,/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 57821626-bc17-4425-9f63-ad79157ec9a9
+    m_ActionName: Attacks/WeakUp[/DualShock4GamepadHID/leftStick/up,/DualShock4GamepadHID/buttonWest,/Keyboard/w,/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 8f8033ed-c5c0-4d48-ac86-c783dec0321e
+    m_ActionName: Attacks/WeakSide[/DualShock4GamepadHID/leftStick/left,/DualShock4GamepadHID/buttonWest,/DualShock4GamepadHID/leftStick/right,/Keyboard/a,/Keyboard/j,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 3eae82eb-9ff9-4349-83e9-344b84121e24
+    m_ActionName: Attacks/WeakDown[/DualShock4GamepadHID/leftStick/down,/DualShock4GamepadHID/buttonWest,/Keyboard/s,/Keyboard/j]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 87e31fcb-d61c-4bbd-add5-461facd2f029
+    m_ActionName: Attacks/Shield[/DualShock4GamepadHID/leftShoulder,/DualShock4GamepadHID/leftTrigger,/Keyboard/q]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Locomotion
@@ -1448,6 +1492,8 @@ MonoBehaviour:
   speed: 7
   gravity: -40
   jumpHeight: 4
+  horizontalFrictionTime: 0.06
+  rotationSmoothingTime: 0.05
 --- !u!1 &1741247949
 GameObject:
   m_ObjectHideFlags: 3

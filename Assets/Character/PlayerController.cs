@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -10,8 +11,15 @@ public class PlayerController : MonoBehaviour
     
     public float gravity = -9.81f;
     public float jumpHeight = 5;
+    public float horizontalFrictionTime = 0.06f;
+    public float rotationSmoothingTime = 0.05f;
     private float _verticalVelocity;
     private float _horizontalVelocity;
+    private float _horizontalVelocitySmoothing;
+
+    private float _yRotation = 0f;
+    private float _yTargetRotation = 0f;
+    private float _yRotationSmoothing;
 
 
     // Start is called before the first frame update
@@ -55,11 +63,23 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _horizontalVelocity = _inputReader.horizontalMove * speed;
+        float targetHorizontalVelocity = _inputReader.horizontalMove * speed;
+        if (_characterController.isGrounded || Mathf.Abs(targetHorizontalVelocity) > 0.05f)
+        {
+            _horizontalVelocity = Mathf.SmoothDamp(_horizontalVelocity, targetHorizontalVelocity, ref _horizontalVelocitySmoothing, horizontalFrictionTime);
+        }
         if (!_characterController.isGrounded)
         {
             _verticalVelocity += gravity * Time.deltaTime;
         }
+
+        if (Mathf.Abs(targetHorizontalVelocity) > 0.02f)
+        {
+            _yTargetRotation = targetHorizontalVelocity > 0 ? 0 : 180;
+        }
+        _yRotation = Mathf.SmoothDamp(_yRotation, _yTargetRotation,
+            ref _yRotationSmoothing, rotationSmoothingTime);
+        this.transform.rotation = Quaternion.Euler(0, _yRotation, 0);
         
         CheckHeadBump();
 
