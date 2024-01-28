@@ -66,7 +66,7 @@ public class AnimController : MonoBehaviour
 
     private void HandleStrongSide()
     {
-        animator.SetTrigger(TriggerWaveGun);
+        // animator.SetTrigger(TriggerWaveGun);
     }
     
     private void HandleStrongUp()
