@@ -27,5 +27,7 @@ public enum EAudioType
     SFX_Train_Rush1,
     SFX_Train_Rush2,
     SFX_Cake,
-    SFX_Pan
+    SFX_Pan,
+    BG_IntroMusic,
+    BG_FightMusic
 }
