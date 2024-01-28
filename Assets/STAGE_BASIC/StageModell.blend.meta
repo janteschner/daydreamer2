@@ -23,7 +23,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: MAT_BRICKS
-    second: {fileID: 2100000, guid: d36735f9ae4fd40e086e258a8f6b3e9e, type: 2}
+    second: {fileID: 2100000, guid: 0582792ec3c06ac4386ef3a110a41e3c, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
