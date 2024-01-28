@@ -22,7 +22,8 @@ public class ProjectileSpawner : MonoBehaviour
 
     public void Spawn()
     {
-        GameObject prefab = Instantiate(ProjectilePrefab, SpawnLocation.position, Quaternion.Euler(0, 0,-90));
+        var direction = InputReader.Instance.horizontalMove > 0 ? -90 : 90;
+        GameObject prefab = Instantiate(ProjectilePrefab, SpawnLocation.position, Quaternion.Euler(0, 0,direction));
         prefab.GetComponent<Projectile>().Direction = transform.forward * ScaleFactor;
     }
 }
