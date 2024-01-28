@@ -51,11 +51,11 @@ Material:
     m_Ints: []
     m_Floats:
     - ADDITIONAL_LIGHT_CALCULATE_SHADOWS: 1
-    - _Add_Threshold: 1
+    - _Add_Threshold: 9.14
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _Sharpness: 1
-    - _Step_Number: 1
+    - _Sharpness: 6.73
+    - _Step_Number: 4
     m_Colors:
     - _Light_Direction: {r: -0.08, g: -1, b: 1.49, a: 0}
   m_BuildTextureStacks: []
