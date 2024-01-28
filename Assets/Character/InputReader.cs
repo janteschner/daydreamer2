@@ -27,6 +27,7 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
     private InputActions inputActions;
 
     private float _cooldownUltil = 0f;
+    private float _noMoveUltil = 0f;
     
     public static InputReader Instance { get; private set; }
 
@@ -65,20 +66,38 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
     {
         _cooldownUltil = Time.time + seconds;
     }
+    
+    private void NoMoveFor(float seconds)
+    {
+        _noMoveUltil = Time.time + seconds;
+    }
 
     private bool OnCooldown()
     {
         return Time.time < _cooldownUltil;
     }
+    private bool CannotMove()
+    {
+        return Time.time < _noMoveUltil;
+    }
+    
 
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        horizontalMove = context.ReadValue<float>();
+        if (CannotMove())
+        {
+            horizontalMove = 0f;
+        }
+        else
+        {
+            horizontalMove = context.ReadValue<float>();
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (CannotMove()) return;
         if (!context.performed)
             return;
         OnJumpPerformed?.Invoke();
@@ -110,6 +129,7 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
         if (!context.performed)
             return;
         Cooldown(1f);
+        NoMoveFor(1f);
 
         OnWeakSidePerformed?.Invoke();
     }
@@ -152,6 +172,7 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
         if (!context.performed)
             return;
         Cooldown(1.6f);
+        NoMoveFor(1.6f);
 
         OnStrongUpPerformed?.Invoke();
     }

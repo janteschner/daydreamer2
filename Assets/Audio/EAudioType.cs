@@ -21,5 +21,7 @@ public enum EAudioType
     SFX_Miss,
     SFX_Punch,
     SFX_Train,
-    SFX_Train_Annoucement
+    SFX_Train_Annoucement,
+    SFX_Fly_Away,
+    SFX_Fake_Gun
 }

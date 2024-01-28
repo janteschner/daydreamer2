@@ -72,6 +72,7 @@ public class PlayerController : MonoBehaviour
     void HandleWeak()
     {
         Debug.Log("Weak!");
+        // BackgroundTrainScript.Instance.PlayTrainAnimation();
     }
     
     void HandleWeakUp()
@@ -96,6 +97,7 @@ public class PlayerController : MonoBehaviour
         var gunSummoner = GetComponent<SummonGun>();
         gunSummoner.SummonInFrontOfParent();
         Debug.Log("Strong Side!");
+        TriggerAudioCollection.Instance.PlayAudioSource(EAudioType.SFX_Fake_Gun, transform.position);
     }
     void HandleStrongDown()
     {

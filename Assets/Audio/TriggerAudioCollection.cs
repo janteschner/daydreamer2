@@ -39,7 +39,7 @@ public class TriggerAudioCollection : MonoBehaviour
     {
         if (PlayAudio)
         {
-            AudioSource.PlayClipAtPoint(AudioClipList[(int)audioSource], position);
+            AudioSource.PlayClipAtPoint(AudioClipList[(int)audioSource], position, 10);
         }
     }
 }

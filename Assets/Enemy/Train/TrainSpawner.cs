@@ -42,5 +42,8 @@ public class TrainSpawner : MonoBehaviour
     {
         yield return new WaitForSeconds(3f);
         TriggerAudioCollection.Instance.PlayAudioSource(EAudioType.SFX_Train, transform.position);
+        yield return new WaitForSeconds(2f);
+        BackgroundTrainScript.Instance.PlayTrainAnimation();
+
     }
 }
