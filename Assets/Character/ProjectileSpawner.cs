@@ -7,7 +7,7 @@ public class ProjectileSpawner : MonoBehaviour
     // Start is called before the first frame update
     [SerializeField] Transform SpawnLocation;
     [SerializeField] GameObject ProjectilePrefab;
-    [SerializeField] float ScaleFactor = 3.0f;
+    [SerializeField] float ScaleFactor = 2.0f;
 
     void Start()
     {

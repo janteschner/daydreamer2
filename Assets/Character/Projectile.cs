@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,5 +22,10 @@ public class Projectile : MonoBehaviour
     void FixedUpdate()
     {
         body.AddForce(Direction, ForceMode.Impulse);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Cake);
     }
 }
