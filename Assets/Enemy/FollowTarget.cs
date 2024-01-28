@@ -37,19 +37,6 @@ public class FollowTarget : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (InputReader.Instance.menuOpen)
-        {
-            _nav.enabled = false;
-        }
-        else
-        {
-            _nav.enabled = true;
-        }
-    }
-    
     public void ApplyKnockback(Vector2 direction)
     {
         Debug.Log("Applying Knockback!");

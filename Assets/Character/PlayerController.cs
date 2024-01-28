@@ -47,7 +47,6 @@ public class PlayerController : MonoBehaviour
         _characterController= GetComponent<CharacterController>();
 
 
-        _inputReader.OnMenuOpenPerformed += HandleStarter;
         _inputReader.OnJumpPerformed += HandleJump;
         _inputReader.OnWeakPerformed += HandleWeak;
         _inputReader.OnWeakUpPerformed += HandleWeakUp;
@@ -60,12 +59,7 @@ public class PlayerController : MonoBehaviour
 
 
     }
-
-    void HandleStarter()
-    {
-        Time.timeScale = 1.0f;
-    }
-
+    
     void HandleJump()
     {
         if (_characterController.isGrounded)
@@ -116,9 +110,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!_inputReader.menuOpen)
-        {
-            float targetHorizontalVelocity = _inputReader.horizontalMove * speed;
+        float targetHorizontalVelocity = _inputReader.horizontalMove * speed;
             if (_characterController.isGrounded || Mathf.Abs(targetHorizontalVelocity) > 0.05f)
             {
                 _horizontalVelocity = Mathf.SmoothDamp(_horizontalVelocity, targetHorizontalVelocity, ref _horizontalVelocitySmoothing, horizontalFrictionTime);
@@ -138,9 +130,8 @@ public class PlayerController : MonoBehaviour
             CheckHeadBump();
 
             _characterController.Move(new Vector3(_horizontalVelocity, _verticalVelocity, 0f) * Time.deltaTime);
-        }
 
-        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
+            transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         if (transform.position.y < -20f)
         {
             GameOver();
