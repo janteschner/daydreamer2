@@ -28,7 +28,7 @@ public class FallingPiano : MonoBehaviour
         if (alreadyHit) return;
         alreadyHit = true;
         TriggerAudioCollection.Instance.PlayAudioSource(EAudioType.SFX_Piano_Crash, transform.position);
-        // TriggerAudioCollection.Instance.PlayAudioSource(EAudioType.SFX_Piano_Crash, 1f, true);
+        GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 100);
         var hitboxComponent = GetComponent<HitboxScript>();
         Destroy(hitboxComponent);
         StartCoroutine(Despawn());
@@ -36,6 +36,7 @@ public class FallingPiano : MonoBehaviour
 
     private IEnumerator Despawn()
     {
+        yield return new WaitForSeconds(0.5f);
         while (transform.localScale.x > 0)
         {
             var newScale = transform.localScale.x - despawnSpeed * Time.deltaTime;

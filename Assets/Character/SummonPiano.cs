@@ -17,6 +17,6 @@ public class SummonPiano : MonoBehaviour
 
     public void SummonAPiano(Vector3 position)
     {
-        Instantiate(pianoPrefab, new Vector3(position.x, summonHeight, position.z), Quaternion.Euler(Random.Range(-10f, 10f),Random.Range(-10f, 10f),Random.Range(-10f, 10f)));
+        Instantiate(pianoPrefab, new Vector3(position.x, summonHeight, position.z), Quaternion.Euler(Random.Range(-10f, 10f),Random.Range(0, 360f),Random.Range(-20f, 20f)));
     }
 }
