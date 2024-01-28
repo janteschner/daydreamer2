@@ -23,6 +23,7 @@ public class Death_FlyIntoScreen : MonoBehaviour
         _rigidbody.constraints = RigidbodyConstraints.None;
         _rigidbody.velocity = Vector3.zero;
         _rigidbody.AddForce(new Vector3(0f, 0.25f, -0.5f) * 100f, ForceMode.Impulse);
+        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Fly_Away);
 
     }
 

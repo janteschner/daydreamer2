@@ -8,5 +8,4 @@ public enum EAudioMixerType
     Storytelling,
     Effects,
     Music
-
 }

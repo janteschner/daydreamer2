@@ -25,6 +25,9 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
     public bool shielding;
 
     private InputActions inputActions;
+
+    private float _cooldownUltil = 0f;
+    private float _noMoveUltil = 0f;
     
     public static InputReader Instance { get; private set; }
 
@@ -59,46 +62,85 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
         inputActions.Attacks.Disable();
     }
 
+    private void Cooldown(float seconds)
+    {
+        _cooldownUltil = Time.time + seconds;
+    }
+    
+    private void NoMoveFor(float seconds)
+    {
+        _noMoveUltil = Time.time + seconds;
+    }
+
+    private bool OnCooldown()
+    {
+        return Time.time < _cooldownUltil;
+    }
+    private bool CannotMove()
+    {
+        return Time.time < _noMoveUltil;
+    }
+    
+
 
     public void OnMove(InputAction.CallbackContext context)
     {
-        horizontalMove = context.ReadValue<float>();
+        if (CannotMove())
+        {
+            horizontalMove = 0f;
+        }
+        else
+        {
+            horizontalMove = context.ReadValue<float>();
+        }
     }
 
     public void OnJump(InputAction.CallbackContext context)
     {
+        if (CannotMove()) return;
         if (!context.performed)
             return;
-        
         OnJumpPerformed?.Invoke();
     }
 
     public void OnWeak(InputAction.CallbackContext context)
     {
+        if (OnCooldown()) return;
         if (!context.performed)
             return;
-        
+        Cooldown(1f);
+
         OnWeakPerformed?.Invoke();
     }
     
     public void OnWeakUp(InputAction.CallbackContext context)
     {
+        if (OnCooldown()) return;
         if (!context.performed)
             return;
+        Cooldown(0.8f);
+
         OnWeakUpPerformed?.Invoke();
     }
 
     public void OnWeakSide(InputAction.CallbackContext context)
     {
+        if (OnCooldown()) return;
         if (!context.performed)
             return;
+        Cooldown(1f);
+        NoMoveFor(1f);
+
         OnWeakSidePerformed?.Invoke();
     }
     
     public void OnWeakDown(InputAction.CallbackContext context)
     {
+        if (OnCooldown()) return;
         if (!context.performed)
             return;
+        Cooldown(0.2f);
+
         OnWeakDownPerformed?.Invoke();
     }
 
@@ -116,24 +158,31 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
 
     public void OnStrong(InputAction.CallbackContext context)
     {
+        if (OnCooldown()) return;
         if (!context.performed)
             return;
-        
+        Cooldown(1f);
+
         OnStrongPerformed?.Invoke();
     }
 
     public void OnStrongUp(InputAction.CallbackContext context)
     {
+        if (OnCooldown()) return;
         if (!context.performed)
             return;
-        
+        Cooldown(1.6f);
+        NoMoveFor(1.6f);
+
         OnStrongUpPerformed?.Invoke();
     }
 
     public void OnStrongSide(InputAction.CallbackContext context)
     {
+        if (OnCooldown()) return;
         if (!context.performed)
             return;
+        Cooldown(3f);
 
         OnStrongSidePerformed?.Invoke();
 
@@ -141,8 +190,10 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
 
     public void OnStrongDown(InputAction.CallbackContext context)
     {
+        if (OnCooldown()) return;
         if (!context.performed)
             return;
+        Cooldown(1f);
 
         OnStrongDownPerformed?.Invoke();
     }

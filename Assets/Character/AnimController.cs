@@ -51,7 +51,11 @@ public class AnimController : MonoBehaviour
     {
         // animator.SetTrigger(TriggerMelee);
         animator.SetTrigger(TriggerHorizontalAttack);
+    }
 
+    public void PlayMissSound()
+    {
+        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Miss);
     }
 
     private void HandleWeakUp()
@@ -66,12 +70,17 @@ public class AnimController : MonoBehaviour
 
     private void HandleStrongSide()
     {
-        animator.SetTrigger(TriggerWaveGun);
+        // animator.SetTrigger(TriggerWaveGun);
     }
     
     private void HandleStrongUp()
     {
         animator.SetTrigger(TriggerFryingPan);
+    }
+    
+    public void PlayFryingPanSound()
+    {
+        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Piano_Crash);
     }
     
     private void HandleStrong()
