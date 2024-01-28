@@ -6,13 +6,20 @@ using UnityEngine.AI;
 public class FollowTarget : MonoBehaviour
 {
     public Transform followTarget;
-    private NavMeshAgent _nav;
     public float speed = 5f;
     public float updateRate = 0.4f;
 
+    public float attackRange = 10.0f;
     
+    private NavMeshAgent _nav;
     private Vector3 _destination;
+    private float _distance;
 
+    public float AgentVelocity { get { return _nav.velocity.x; } }
+    public float AgentAirVelocity { get { return _nav.velocity.y; } }
+
+    public bool IsInReach { get { return (_nav.remainingDistance > 0 && _nav.remainingDistance < attackRange); } }
+    public bool IsActive { get { return (_nav != null && _nav.isActiveAndEnabled); } }
 
 
     // Start is called before the first frame update
@@ -35,6 +42,11 @@ public class FollowTarget : MonoBehaviour
         {
             _nav.SetDestination(_destination);
         }
+
+        _distance = _nav.remainingDistance;
+        //Debug.Log("Distance:" + _distance);
+        Debug.Log("Velocity:" + _nav.velocity);
+       
     }
 
     public void ApplyKnockback(Vector2 direction)
