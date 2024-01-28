@@ -40,7 +40,7 @@ public class AnimController : MonoBehaviour
         input.OnStrongSidePerformed += HandleStrongSide;
         // input.OnStrongDownPerformed += HandleStrongDown;
 
-
+        TriggerAudioCollection.Instance.PlayBGSound(EAudioType.BG_FightMusic);
     }
 
     private void HandleWeakDown()
@@ -60,12 +60,14 @@ public class AnimController : MonoBehaviour
 
     private void HandleWeakUp()
     {
-        animator.SetTrigger(TriggerThrow);
+        // animator.SetTrigger(TriggerThrow);
     }
 
     private void HandleWeak()
     {
-        animator.SetTrigger(TriggerHit);
+        animator.SetTrigger(TriggerThrow);
+
+        // animator.SetTrigger(TriggerHit);
     }
 
     private void HandleStrongSide()
