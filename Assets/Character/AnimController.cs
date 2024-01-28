@@ -51,7 +51,11 @@ public class AnimController : MonoBehaviour
     {
         // animator.SetTrigger(TriggerMelee);
         animator.SetTrigger(TriggerHorizontalAttack);
+    }
 
+    public void PlayMissSound()
+    {
+        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Miss);
     }
 
     private void HandleWeakUp()

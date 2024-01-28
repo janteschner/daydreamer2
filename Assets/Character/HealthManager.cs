@@ -23,7 +23,7 @@ public class HealthManager : MonoBehaviour
     {
         health -= amount;
         Debug.Log("Took " + amount + " damage. Remaining health: " + health);
-        TriggerAudioCollection.Instance.PlayAudioSource(EAudioType.Narration_Ouch, transform.position);
+        TriggerAudioCollection.Instance.PlaySound(EAudioType.Narration_Ouch);
 
         if (health <= 0)
         {
@@ -38,7 +38,7 @@ public class HealthManager : MonoBehaviour
         if (isPlayer)
         {
             PlayerController.Instance.GameOver();
-            TriggerAudioCollection.Instance.PlayAudioSource(EAudioType.Narration_ThatMustHaveHurt, transform.position);
+            TriggerAudioCollection.Instance.PlaySound(EAudioType.Narration_ThatMustHaveHurt);
         }
         else
         {

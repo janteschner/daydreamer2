@@ -9,7 +9,7 @@ public class WorldGunScript : MonoBehaviour
     void Start()
     {
         _animation = GetComponentInChildren<Animation>();
-        TriggerAudioCollection.Instance.PlayAudioSource(EAudioType.SFX_Piano_Crash, new Vector3(0,0,0));
+        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Fake_Gun);
     }
 
     // Update is called once per frame

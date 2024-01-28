@@ -27,7 +27,7 @@ public class FallingPiano : MonoBehaviour
     {
         if (alreadyHit) return;
         alreadyHit = true;
-        TriggerAudioCollection.Instance.PlayAudioSource(EAudioType.SFX_Piano_Crash, transform.position);
+        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Piano_Crash);
         GetComponentInChildren<SkinnedMeshRenderer>().SetBlendShapeWeight(0, 100);
         var hitboxComponent = GetComponent<HitboxScript>();
         Destroy(hitboxComponent);

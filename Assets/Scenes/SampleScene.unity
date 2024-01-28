@@ -4394,7 +4394,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2395685794519572641, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
       propertyPath: AudioClipList.Array.size
-      value: 21
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 2395685794519572641, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
       propertyPath: AudioClipList.Array.data[19]
@@ -4404,6 +4404,14 @@ PrefabInstance:
       propertyPath: AudioClipList.Array.data[20]
       value: 
       objectReference: {fileID: 8300000, guid: fa52afc0199c5d441835225a4faee67a, type: 3}
+    - target: {fileID: 2395685794519572641, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
+      propertyPath: AudioClipList.Array.data[21]
+      value: 
+      objectReference: {fileID: 8300000, guid: 9d0b26b255fd6624981bd67d8564b0fa, type: 3}
+    - target: {fileID: 2395685794519572641, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
+      propertyPath: AudioClipList.Array.data[22]
+      value: 
+      objectReference: {fileID: 8300000, guid: 2d526fcb9ab27d84aabdd043346c752e, type: 3}
     - target: {fileID: 4795351268556548868, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4449,7 +4457,6 @@ PrefabInstance:
       value: Sounds
       objectReference: {fileID: 0}
     m_RemovedComponents:
-    - {fileID: 7750774343118777591, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
     - {fileID: 5328800494456514025, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

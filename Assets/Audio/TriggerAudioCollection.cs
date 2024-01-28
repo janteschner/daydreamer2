@@ -8,6 +8,7 @@ public class TriggerAudioCollection : MonoBehaviour
 {
     
     public static TriggerAudioCollection Instance { get; private set; }
+    private AudioSource _source;
 
     [SerializeField] public List<AudioClip> AudioClipList;
     [SerializeField] bool PlayAudio;
@@ -24,22 +25,18 @@ public class TriggerAudioCollection : MonoBehaviour
         }
     }
 
-    public void PlayAudioSource(EAudioType audioSource, float volume, bool isSFX)
+    private void Start()
     {
-        if (PlayAudio)
-        {
-            AudioSource source = gameObject.AddComponent<AudioSource>();
-            source.clip = AudioClipList[(int)audioSource];
-            source.volume = volume;
-            source.Play();
-        }
+        _source = GetComponent<AudioSource>();
     }
 
-    public void PlayAudioSource(EAudioType audioSource, Vector3 position)
+    public void PlaySound(EAudioType audioSource)
     {
         if (PlayAudio)
         {
-            AudioSource.PlayClipAtPoint(AudioClipList[(int)audioSource], position, 10);
+            // _source.clip = AudioClipList[(int)audioSource];
+            _source.PlayOneShot(AudioClipList[(int)audioSource], 1f);
+            // AudioSource.PlayClipAtPoint(AudioClipList[(int)audioSource], position, 10);
         }
     }
 }

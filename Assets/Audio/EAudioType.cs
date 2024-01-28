@@ -23,5 +23,7 @@ public enum EAudioType
     SFX_Train,
     SFX_Train_Annoucement,
     SFX_Fly_Away,
-    SFX_Fake_Gun
+    SFX_Fake_Gun,
+    SFX_Train_Rush1,
+    SFX_Train_Rush2
 }
