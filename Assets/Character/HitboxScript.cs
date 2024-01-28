@@ -72,7 +72,7 @@ public class HitboxScript : MonoBehaviour
 
             if (!noBubble)
             {
-                OnomatopoeiaSpawner.Instance.InstantiateAt(other.transform.position);
+                OnomatopoeiaSpawner.Instance.InstantiateAt(other.transform.position + Vector3.up);
             }
             var survived = healthManager.TakeDamage(damageAmount, usedDamageType);
             if (survived)
