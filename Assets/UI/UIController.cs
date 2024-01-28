@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class NewBehaviourScript : MonoBehaviour
 {
@@ -25,7 +26,6 @@ public class NewBehaviourScript : MonoBehaviour
 
     void MenuClose()
     {
-        canvas.enabled = false;
-        closeCam.enabled = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 }
