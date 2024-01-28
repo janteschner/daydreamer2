@@ -22,7 +22,8 @@ public class TriggerAudioCollection : MonoBehaviour
         } 
         else 
         { 
-            Instance = this; 
+            Instance = this;
+            DontDestroyOnLoad(transform.root);
         }
     }
     
