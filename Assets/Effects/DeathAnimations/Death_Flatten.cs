@@ -15,6 +15,11 @@ public class Death_Flatten : MonoBehaviour
         {
             c.enabled = false;
         }
+        
+        foreach(HitboxScript h in GetComponentsInChildren<HitboxScript>())
+        {
+            Destroy(h);
+        }
 
         var rigidbody = gameObject.GetComponent<Rigidbody>();
         rigidbody.constraints = RigidbodyConstraints.FreezeAll;

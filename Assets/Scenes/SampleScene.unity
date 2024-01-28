@@ -1251,6 +1251,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 615973453606616324, guid: b5f37b9eb898e8c4fb848cddd766fc90, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 615973453606616324, guid: b5f37b9eb898e8c4fb848cddd766fc90, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 615973453606616324, guid: b5f37b9eb898e8c4fb848cddd766fc90, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 1240449908730916404, guid: b5f37b9eb898e8c4fb848cddd766fc90, type: 3}
       propertyPath: m_Name
       value: Jane_Doe
@@ -1299,6 +1311,18 @@ PrefabInstance:
       propertyPath: audioCollection
       value: 
       objectReference: {fileID: 1482688470}
+    - target: {fileID: 5595630922732849944, guid: b5f37b9eb898e8c4fb848cddd766fc90, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395507369141511217, guid: b5f37b9eb898e8c4fb848cddd766fc90, type: 3}
+      propertyPath: damageAmount
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8395507369141511217, guid: b5f37b9eb898e8c4fb848cddd766fc90, type: 3}
+      propertyPath: horizontalKnockback
+      value: 25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1529,6 +1553,7 @@ GameObject:
   m_Component:
   - component: {fileID: 534749962}
   - component: {fileID: 534749961}
+  - component: {fileID: 534749963}
   m_Layer: 0
   m_Name: SingletonsGameObject
   m_TagString: Untagged
@@ -1564,6 +1589,22 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &534749963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 534749960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 371a30b108a539544b6fd0ba0bf5e84f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefabs:
+  - {fileID: 2542973232835551867, guid: 1ea7f5a7888cc564a9431992658f5af0, type: 3}
+  - {fileID: 5021179862495371160, guid: 5b458af80f36a6e4ab453ea9ea539fd4, type: 3}
+  - {fileID: 4915218376527295455, guid: 3cb0d9bbaadbba649a74608e3e8c3130, type: 3}
 --- !u!1001 &547423962
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2518,7 +2559,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2882765565037721793, guid: 1ea7f5a7888cc564a9431992658f5af0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -7.16
       objectReference: {fileID: 0}
     - target: {fileID: 2882765565037721793, guid: 1ea7f5a7888cc564a9431992658f5af0, type: 3}
       propertyPath: m_LocalPosition.y

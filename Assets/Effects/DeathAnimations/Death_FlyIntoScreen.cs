@@ -19,6 +19,10 @@ public class Death_FlyIntoScreen : MonoBehaviour
         {
             Destroy(c);
         }
+        foreach(HitboxScript h in GetComponentsInChildren<HitboxScript>())
+        {
+            Destroy(h);
+        }
 
         _rigidbody.constraints = RigidbodyConstraints.None;
         _rigidbody.velocity = Vector3.zero;

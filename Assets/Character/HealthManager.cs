@@ -23,8 +23,11 @@ public class HealthManager : MonoBehaviour
     {
         health -= amount;
         Debug.Log("Took " + amount + " damage. Remaining health: " + health);
-        TriggerAudioCollection.Instance.PlaySound(EAudioType.Narration_Ouch);
 
+        if (isPlayer)
+        {
+            TriggerAudioCollection.Instance.PlaySound(EAudioType.Narration_Ouch);
+        }
         if (health <= 0)
         {
             Die(type);
