@@ -80,7 +80,7 @@ public class AnimController : MonoBehaviour
     
     public void PlayFryingPanSound()
     {
-        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Piano_Crash);
+        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Pan);
     }
     
     private void HandleStrong()

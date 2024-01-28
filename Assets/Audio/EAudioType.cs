@@ -26,5 +26,6 @@ public enum EAudioType
     SFX_Fake_Gun,
     SFX_Train_Rush1,
     SFX_Train_Rush2,
-    SFX_Cake
+    SFX_Cake,
+    SFX_Pan
 }
