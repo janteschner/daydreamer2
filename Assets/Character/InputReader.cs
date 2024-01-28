@@ -13,6 +13,11 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
     public Action OnWeakUpPerformed;
     public Action OnWeakSidePerformed;
     public Action OnWeakDownPerformed;
+    public Action OnStrongPerformed;
+    public Action OnStrongUpPerformed;
+    public Action OnStrongSidePerformed;
+    public Action OnStrongDownPerformed;
+
 
     public Action OnMenuOpenPerformed;
 
@@ -107,6 +112,39 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
         {
             shielding = false;
         }
+    }
+
+    public void OnStrong(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+        
+        OnStrongPerformed?.Invoke();
+    }
+
+    public void OnStrongUp(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+        
+        OnStrongUpPerformed?.Invoke();
+    }
+
+    public void OnStrongSide(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        OnStrongSidePerformed?.Invoke();
+
+    }
+
+    public void OnStrongDown(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        OnStrongDownPerformed?.Invoke();
     }
 
     public void OnMenu(InputAction.CallbackContext context)

@@ -53,6 +53,11 @@ public class PlayerController : MonoBehaviour
         _inputReader.OnWeakUpPerformed += HandleWeakUp;
         _inputReader.OnWeakSidePerformed += HandleWeakSide;
         _inputReader.OnWeakDownPerformed += HandleWeakDown;
+        _inputReader.OnStrongPerformed += HandleStrong;
+        _inputReader.OnStrongUpPerformed += HandleStrongUp;
+        _inputReader.OnStrongSidePerformed += HandleStrongSide;
+        _inputReader.OnStrongDownPerformed += HandleStrongDown;
+
 
     }
 
@@ -83,6 +88,24 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log("Weak Side!");
     }
+    void HandleStrong()
+    {
+        Debug.Log("Strong!");
+    }
+    
+    void HandleStrongUp()
+    {
+        Debug.Log("Strong Up!");
+    }
+    void HandleStrongSide()
+    {
+        Debug.Log("Strong Side!");
+    }
+    void HandleStrongDown()
+    {
+        Debug.Log("Strong Down!");
+    }
+
     void HandleWeakDown()
     {
         Debug.Log("Weak Down!");
@@ -148,7 +171,7 @@ public class PlayerController : MonoBehaviour
     {
         _yRotation = Mathf.SmoothDamp(_yRotation, targetRotation,
            ref _yRotationSmoothing, rotationSmoothingTime);
-        this.transform.rotation = Quaternion.Euler(0, _yRotation + 0.002f, 0);
+        transform.rotation = Quaternion.Euler(0, _yRotation , 0);
     }
 
     public void GameOver()

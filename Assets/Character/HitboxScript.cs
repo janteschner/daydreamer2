@@ -13,6 +13,8 @@ public class HitboxScript : MonoBehaviour
     public bool affectsPlayer = false;
     public bool affectsEnemies = false;
     public DamageType damageType = DamageType.Crush;
+    public bool noBubble = false;
+
 
     private List<Collider> _alreadyHit;
     
@@ -67,7 +69,11 @@ public class HitboxScript : MonoBehaviour
                     usedDamageType = DamageType.KnockbackLeft;
                 }
             }
-            OnomatopoeiaSpawner.Instance.InstantiateAt(other.transform.position);
+
+            if (!noBubble)
+            {
+                OnomatopoeiaSpawner.Instance.InstantiateAt(other.transform.position);
+            }
             var survived = healthManager.TakeDamage(damageAmount, usedDamageType);
             if (survived)
             {

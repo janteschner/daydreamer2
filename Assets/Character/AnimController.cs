@@ -19,6 +19,7 @@ public class AnimController : MonoBehaviour
     [SerializeField] private String TriggerThrow = "Throw";
     [SerializeField] private String TriggerHit = "Hit";
     [SerializeField] private String TriggerHorizontalAttack = "HorizontalAttack";
+    [SerializeField] private String TriggerWaveGun = "Wave";
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,10 @@ public class AnimController : MonoBehaviour
         input.OnWeakUpPerformed += HandleWeakUp;
         input.OnWeakSidePerformed += HandleWeakSide;
         input.OnWeakDownPerformed += HandleWeakDown;
+        // input.OnStrongPerformed += HandleStrong;
+        // input.OnStrongUpPerformed += HandleStrongUp;
+        input.OnStrongSidePerformed += HandleStrongSide;
+        // input.OnStrongDownPerformed += HandleStrongDown;
 
 
     }
@@ -61,6 +66,11 @@ public class AnimController : MonoBehaviour
         animator.SetTrigger(TriggerHit);
     }
 
+    private void HandleStrongSide()
+    {
+        animator.SetTrigger(TriggerWaveGun);
+    }
+    
     // Update is called once per frame
     void Update()
     {
