@@ -10,8 +10,6 @@ public class TriggerAudioCollection : MonoBehaviour
     public static TriggerAudioCollection Instance { get; private set; }
 
     [SerializeField] public List<AudioClip> AudioClipList;
-    [SerializeField] AudioSource StorytellingSource;
-    [SerializeField] AudioSource SFXSource;
     [SerializeField] bool PlayAudio;
 
     private void Awake()
@@ -30,7 +28,7 @@ public class TriggerAudioCollection : MonoBehaviour
     {
         if (PlayAudio)
         {
-            var source = isSFX ? SFXSource : StorytellingSource;
+            AudioSource source = gameObject.AddComponent<AudioSource>();
             source.clip = AudioClipList[(int)audioSource];
             source.volume = volume;
             source.Play();
