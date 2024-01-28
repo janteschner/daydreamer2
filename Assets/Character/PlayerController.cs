@@ -93,6 +93,8 @@ public class PlayerController : MonoBehaviour
     }
     void HandleStrongSide()
     {
+        var gunSummoner = GetComponent<SummonGun>();
+        gunSummoner.SummonInFrontOfParent();
         Debug.Log("Strong Side!");
     }
     void HandleStrongDown()
