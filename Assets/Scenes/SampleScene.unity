@@ -3789,6 +3789,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 192e141f9e3a3c9499f41f6dac2b7988, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1482688472 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 7750774343118777591, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
+  m_PrefabInstance: {fileID: 2071458837}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1545188099
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4393,6 +4398,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2395685794519572641, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
+      propertyPath: sfxSource
+      value: 
+      objectReference: {fileID: 1482688472}
+    - target: {fileID: 2395685794519572641, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
       propertyPath: AudioClipList.Array.size
       value: 23
       objectReference: {fileID: 0}
@@ -4452,12 +4461,27 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5328800494456514025, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328800494456514025, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 65de823941d0f1a4b9b0647585893333, type: 3}
+    - target: {fileID: 5328800494456514025, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5328800494456514025, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
+      propertyPath: OutputAudioMixerGroup
+      value: 
+      objectReference: {fileID: -788022930025885411, guid: ff78565334af33545a50d73c1801d40a, type: 2}
     - target: {fileID: 8726544398862617509, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
       propertyPath: m_Name
       value: Sounds
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 5328800494456514025, guid: efa137a1795bce94e9ffe018295c269b, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

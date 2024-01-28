@@ -40,9 +40,9 @@ public class TrainSpawner : MonoBehaviour
     }
     private IEnumerator SecondSound()
     {
-        yield return new WaitForSeconds(2.8f);
-        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Train_Rush2);
-        yield return new WaitForSeconds(2.3f);
+        yield return new WaitForSeconds(3.1f);
+        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Train_Rush2, 0.5f);
+        yield return new WaitForSeconds(2f);
         BackgroundTrainScript.Instance.PlayTrainAnimation();
 
     }

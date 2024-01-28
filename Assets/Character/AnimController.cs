@@ -78,6 +78,11 @@ public class AnimController : MonoBehaviour
         animator.SetTrigger(TriggerFryingPan);
     }
     
+    public void PlayFryingPanSound()
+    {
+        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Piano_Crash);
+    }
+    
     private void HandleStrong()
     {
         animator.SetTrigger(TriggerChompers);
