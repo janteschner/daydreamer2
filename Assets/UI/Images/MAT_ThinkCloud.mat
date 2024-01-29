@@ -52,7 +52,7 @@ Material:
     m_Floats:
     - _BUILTIN_QueueControl: 0
     - _BUILTIN_QueueOffset: 0
-    - _T: 0.99489605
+    - _T: 0.9811976
     m_Colors:
     - _Color: {r: 0.7264151, g: 0.66131186, b: 0.66131186, a: 1}
     - _Vector4: {r: 0, g: 0, b: 0, a: 0}
