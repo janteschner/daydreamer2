@@ -39,8 +39,6 @@ public class AnimController : MonoBehaviour
         input.OnStrongUpPerformed += HandleStrongUp;
         input.OnStrongSidePerformed += HandleStrongSide;
         // input.OnStrongDownPerformed += HandleStrongDown;
-
-        TriggerAudioCollection.Instance.PlayBGSound(EAudioType.BG_FightMusic);
     }
 
     private void HandleWeakDown()

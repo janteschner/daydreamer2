@@ -20,6 +20,18 @@ public class UserInterfaces : MonoBehaviour
 
     public void NextScene()
     {
+        TriggerAudioCollection.Instance.StopNarratorSound();
+        TriggerAudioCollection.Instance.PlayBGSound(EAudioType.BG_FightMusic);
+
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+    }
+
+    public void Close()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#endif
+        Application.Quit();
     }
 }
