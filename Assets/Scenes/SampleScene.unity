@@ -2885,6 +2885,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8359815241060360258, guid: 7e15fad56830fd44a9d518716fd60353, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a8538246e4e4eac45baad70ba3db2f29, type: 2}
     - target: {fileID: -8143710011712545758, guid: 7e15fad56830fd44a9d518716fd60353, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -2893,6 +2897,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: StageModell
       objectReference: {fileID: 0}
+    - target: {fileID: 2508812124418183303, guid: 7e15fad56830fd44a9d518716fd60353, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a8538246e4e4eac45baad70ba3db2f29, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
