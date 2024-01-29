@@ -26,7 +26,7 @@ public class HealthManager : MonoBehaviour
 
         if (isPlayer)
         {
-            TriggerAudioCollection.Instance.PlaySound(EAudioType.Narration_Ouch);
+            TriggerAudioCollection.Instance.PlaySound(EAudioType.Narration_Ouch, 0.33f);
         }
         if (health <= 0)
         {

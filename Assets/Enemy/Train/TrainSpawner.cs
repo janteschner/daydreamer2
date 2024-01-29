@@ -34,14 +34,14 @@ public class TrainSpawner : MonoBehaviour
 
     void SpawnTrain()
     {
-        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Train_Annoucement);
+        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Train_Annoucement, 1.2f);
         Instantiate(trainPrefab, transform);
         StartCoroutine(SecondSound());
     }
     private IEnumerator SecondSound()
     {
         yield return new WaitForSeconds(3.1f);
-        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Train_Rush2, 0.5f);
+        TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Train_Rush2, 0.6f);
         yield return new WaitForSeconds(2f);
         BackgroundTrainScript.Instance.PlayTrainAnimation();
 
