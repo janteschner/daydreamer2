@@ -2495,7 +2495,7 @@ Transform:
   m_GameObject: {fileID: 958809314}
   serializedVersion: 2
   m_LocalRotation: {x: 0.99957615, y: -0, z: -0, w: 0.02911183}
-  m_LocalPosition: {x: -7.147, y: -0.078, z: 0.614}
+  m_LocalPosition: {x: -7.54, y: -0.078, z: 0.614}
   m_LocalScale: {x: 1.6310744, y: 1.9390212, z: 0.7877437}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3785,10 +3785,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a6025598aa347ae4db1a2262aae8731d, type: 2}
+    - target: {fileID: -8270237889823493819, guid: 7e15fad56830fd44a9d518716fd60353, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fb0f43d2fab78d419c8e2eea6524d2e, type: 2}
     - target: {fileID: -8143710011712545758, guid: 7e15fad56830fd44a9d518716fd60353, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: cd5bf90231260e54e84abec1d0679c88, type: 2}
+    - target: {fileID: -7664728788398519507, guid: 7e15fad56830fd44a9d518716fd60353, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fb0f43d2fab78d419c8e2eea6524d2e, type: 2}
     - target: {fileID: -7248494594479488703, guid: 7e15fad56830fd44a9d518716fd60353, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -3933,6 +3941,10 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a6025598aa347ae4db1a2262aae8731d, type: 2}
+    - target: {fileID: 8628502785719625371, guid: 7e15fad56830fd44a9d518716fd60353, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8fb0f43d2fab78d419c8e2eea6524d2e, type: 2}
     - target: {fileID: 8835395278202758800, guid: 7e15fad56830fd44a9d518716fd60353, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
