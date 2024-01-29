@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -27,13 +28,15 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (AgentTarget != null && AgentTarget.IsActive)
+       
+        if (!AgentTarget.IsUnityNull() && AgentTarget.IsActive)
         {
             AgentAnim.SetBool("Grounded", (AgentTarget.AgentAirVelocity == 0));
-            AgentAnim.SetFloat("Velocity", AgentTarget.AgentVelocity);
+            AgentAnim.SetFloat("Velocity", Mathf.Abs(AgentTarget.AgentVelocity));
             AgentAnim.SetFloat("AirVelocity", AgentTarget.AgentAirVelocity);
 
-            if (AgentTarget.IsInReach)
+          
+            if (AgentTarget.IsInReach && !AgentAnim.GetNextAnimatorStateInfo(0).IsTag("attacking"))
             {
                 int decision = rand.Next(0, 2);
                 if (decision == 0)

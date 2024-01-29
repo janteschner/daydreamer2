@@ -128,8 +128,8 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
         if (OnCooldown()) return;
         if (!context.performed)
             return;
-        Cooldown(1f);
-        NoMoveFor(1f);
+        Cooldown(0.5f);
+        NoMoveFor(0.5f);
 
         OnWeakSidePerformed?.Invoke();
     }
@@ -171,8 +171,8 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
         if (OnCooldown()) return;
         if (!context.performed)
             return;
-        Cooldown(1.6f);
-        NoMoveFor(1.6f);
+        Cooldown(1.3f);
+        NoMoveFor(0.65f);
 
         OnStrongUpPerformed?.Invoke();
     }
@@ -182,7 +182,8 @@ public class InputReader : MonoBehaviour, InputActions.ILocomotionActions, Input
         if (OnCooldown()) return;
         if (!context.performed)
             return;
-        Cooldown(3f);
+        Cooldown(1f);
+       // NoMoveFor(0.2f);
 
         OnStrongSidePerformed?.Invoke();
 

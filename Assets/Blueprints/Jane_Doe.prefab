@@ -216,7 +216,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd0e32cc9c0a1214d8e2591c145b480f, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.35
+      value: 3.604
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: fd0e32cc9c0a1214d8e2591c145b480f, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1659,6 +1659,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 9100000, guid: 3680ef8463035c34a8ba91d86106b0eb, type: 2}
     - target: {fileID: 5866666021909216657, guid: fd0e32cc9c0a1214d8e2591c145b480f, type: 3}
+      propertyPath: m_UpdateMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: fd0e32cc9c0a1214d8e2591c145b480f, type: 3}
       propertyPath: m_WarningMessage
       value: "\nBinding warning: Some generic clip(s) animate transforms that are
         already bound by a Humanoid avatar. These transforms can only be changed
@@ -2068,7 +2072,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 1.6
   m_Radius: 0.4
-  m_SlopeLimit: 45
+  m_SlopeLimit: 25
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -2397,15 +2401,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4560466245238639347, guid: 5acd5b92b131a4c4db5b006918d2e2f6, type: 3}
       propertyPath: m_LocalScale.x
-      value: 130
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 4560466245238639347, guid: 5acd5b92b131a4c4db5b006918d2e2f6, type: 3}
       propertyPath: m_LocalScale.y
-      value: 130
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 4560466245238639347, guid: 5acd5b92b131a4c4db5b006918d2e2f6, type: 3}
       propertyPath: m_LocalScale.z
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 4560466245238639347, guid: 5acd5b92b131a4c4db5b006918d2e2f6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2793,7 +2797,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3089054413121195365, guid: 5acd5b92b131a4c4db5b006918d2e2f6, type: 3}
       propertyPath: damageAmount
-      value: 10
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 3089054413121195365, guid: 5acd5b92b131a4c4db5b006918d2e2f6, type: 3}
       propertyPath: verticalKnockback
@@ -2801,7 +2805,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3089054413121195365, guid: 5acd5b92b131a4c4db5b006918d2e2f6, type: 3}
       propertyPath: horizontalKnockback
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4560466245238639347, guid: 5acd5b92b131a4c4db5b006918d2e2f6, type: 3}
       propertyPath: m_LocalScale.x

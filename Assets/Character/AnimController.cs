@@ -83,6 +83,11 @@ public class AnimController : MonoBehaviour
         TriggerAudioCollection.Instance.PlaySound(EAudioType.SFX_Pan);
     }
     
+    public void KnockbackSelf()
+    {
+        PlayerController.Instance.ApplyKnockback(new Vector2(0, 25));
+    }
+    
     private void HandleStrong()
     {
         animator.SetTrigger(TriggerChompers);

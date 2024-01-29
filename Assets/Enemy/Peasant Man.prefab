@@ -392,7 +392,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 0
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -467,8 +467,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   followTarget: {fileID: 0}
-  speed: 5
-  updateRate: 0.4
+  speed: 4
+  updateRate: 0.38
   attackRange: 0.5
 --- !u!114 &8437472164006290167
 MonoBehaviour:

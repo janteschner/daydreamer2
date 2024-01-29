@@ -5,6 +5,8 @@ using UnityEngine.AI;
 
 public class FollowTarget : MonoBehaviour
 {
+    Animator AgentAnim;
+    
     public Transform followTarget;
     public float speed = 5f;
     public float updateRate = 0.4f;
@@ -29,9 +31,12 @@ public class FollowTarget : MonoBehaviour
         {
             followTarget = GameObject.FindGameObjectWithTag("Player").transform;
         }
+        
+        AgentAnim = GetComponent<Animator>();
 
         _nav = GetComponent<NavMeshAgent>();
         _nav.speed = speed;
+       
         InvokeRepeating(nameof(UpdateNavigation), 0f, updateRate);
     }
 
@@ -43,9 +48,19 @@ public class FollowTarget : MonoBehaviour
             _nav.SetDestination(_destination);
         }
 
+    
         _distance = _nav.remainingDistance;
         //Debug.Log("Distance:" + _distance);
         Debug.Log("Velocity:" + _nav.velocity);
+
+        if (AgentAnim.GetCurrentAnimatorStateInfo(0).IsTag("attacking"))
+        {
+            _nav.speed = 0;
+        }
+        else
+        {
+            _nav.speed = speed;
+        }
        
     }
 
