@@ -42,4 +42,14 @@ public class TriggerAudioCollection : MonoBehaviour
     {
         narrSource.PlayOneShot(AudioClipList[(int)audioSource], volume);
     }
+
+    public void StopNarratorSound()
+    {
+        narrSource.Stop();
+    }
+    public void StopBGMSound()
+    {
+        bgmSource.Stop();
+    }
+ 
 }
